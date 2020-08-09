@@ -3,9 +3,7 @@
   hosts: web-server
   gather_facts: false
   tasks:
-    - name: installing pkgs
+    - name: installing {{ pkg_name }}
       yum:
-        name: 
-         - httpd
-         - firewalld
+        name: "{{ pkg_name }}"
         state: present
