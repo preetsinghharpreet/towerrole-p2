@@ -1,0 +1,25 @@
+---
+- name: play for packages
+  hosts: web-server
+  gather_facts: false
+  tasks:
+    - name: modifying config file
+      replace:
+        path: /etc/httpd/conf/httpd.conf
+        regexp: "{{ item }}"
+        replace: "ansible.html"
+      loop:
+       - index.html
+       - custom.html
+      notify: restart_apache
+
+    - name: creating document root
+      copy:
+        content: "Welcome to Tower deployed Web Applicaion"
+        dest: /var/www/html/ansible.html
+
+  handlers:
+    - name: restart_apache
+      service:
+        name: httpd
+        state: restarted

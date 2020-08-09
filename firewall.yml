@@ -1,0 +1,9 @@
+---
+- name: play for packages
+  hosts: web-server
+  gather_facts: false
+  tasks:
+    - name: allow apache in fw
+      firewalld:
+        service: http
+        state: enabled

@@ -1,0 +1,13 @@
+---
+- name: play for packages
+  hosts: web-server
+  gather_facts: false
+  tasks:
+    - name: starting service
+      service:
+        name: "{{ item }}"
+        state: started
+        enabled: true
+      with_items: 
+        - httpd
+        - firewalld

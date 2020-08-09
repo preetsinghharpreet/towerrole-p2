@@ -1,0 +1,26 @@
+---
+- name: play1
+  hosts: web-server 
+  gather_facts: false
+  tasks:
+    - name: installing pkgs
+      yum:
+        name: 
+          - httpd
+          - firewalld
+        state: present
+
+
+    - name: starting services
+      service: 
+         name: "{{ item }}"
+         state: started
+         enabled: true
+      loop: 
+        - httpd
+        - firewalld
+
+    - name: allow apache in fw
+      firewalld:
+         service: http
+         state: enabled

@@ -1,0 +1,11 @@
+---
+- name: play for packages
+  hosts: web-server
+  gather_facts: false
+  tasks:
+    - name: installing pkgs
+      yum:
+        name: 
+         - httpd
+         - firewalld
+        state: present
