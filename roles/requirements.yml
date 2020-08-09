@@ -1,0 +1,5 @@
+---
+- src: https://github.com/preetsinghharpreet/dnsserver.git
+  name: ansible.dns
+  scm: git
+  version: master

@@ -1,0 +1,8 @@
+---
+- name: play to deploy DNS using ansible roles
+  hosts: db-server
+  roles:
+    - ansible.dns   
+
+
+
